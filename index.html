@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="ro" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wanderlight – agenție de călătorii</title>
+<meta name="description" content="Wanderlight: călătorii de zi, cu soare și mare, și de noapte, cu orașe și munți. Destinații, circuite, pachete și oferte.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✈️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="top"><div class="wrap bar">
+  <a class="brand" href="#sus">Wanderlight</a>
+  <nav><a href="#destinatii">Destinații</a><a href="#itinerar">Circuit</a><a href="#pachete">Pachete</a><a href="#contact">Contact</a></nav>
+  <button class="mode" id="mode" role="switch" aria-checked="false" aria-label="Schimbă între zi și noapte">
+    <span class="opt o-dark">Noapte</span><span class="opt o-light">Zi</span><span class="thumb"></span>
+  </button>
+</div></header>
+
+<main id="sus">
+<section class="hero"><div class="wrap hgrid">
+  <div class="copy">
+    <h1 id="h1"></h1>
+    <p id="lead" class="lead"></p>
+    <div class="cta"><a class="btn" href="#destinatii" id="cta1"></a><a class="btn ghost" href="#contact">Cere o ofertă</a></div>
+  </div>
+  <div class="stage" aria-hidden="true">
+    <div class="glow"></div>
+    <div class="arch">
+      <svg class="scene" viewBox="0 0 480 560">
+        <defs>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="sk1"/><stop offset="1" class="sk2"/></linearGradient>
+          <mask id="bite"><rect width="480" height="560" fill="#fff"/><circle cx="366" cy="172" r="36" fill="#000"/></mask>
+        </defs>
+        <rect width="480" height="560" fill="url(#sky)"/>
+        <g class="stars" id="stars"></g>
+        <g class="sun"><circle cx="340" cy="190" r="48"/></g>
+        <g class="moon"><circle cx="340" cy="190" r="44" mask="url(#bite)"/></g>
+        <g class="clouds" id="clouds"></g>
+        <path class="plane" d="M0 0L34-6 26-20h6l18 14h22q8 2 8 6t-8 6H50L32 20h-6l8-14z"/>
+        <path class="m1" d="M0 390 90 280l70 70 90-130 90 110 70-50 70 80v250H0z"/>
+        <path class="m2" d="M0 440 110 340l90 80 100-120 100 100 80-50v266H0z"/>
+        <g class="dayg">
+          <rect class="sea" y="448" width="480" height="112"/>
+          <path class="wave" d="M-60 470q30-14 60 0t60 0 60 0 60 0 60 0 60 0 60 0 60 0 60 0"/>
+          <path class="wave w2" d="M-60 506q30-14 60 0t60 0 60 0 60 0 60 0 60 0 60 0 60 0 60 0"/>
+          <path class="sand" d="M30 456q80-40 160 0z"/>
+          <path class="trunk" d="M110 430q8-36-2-62"/>
+          <path class="leaf" d="M108 368q-34-18-58 4 30-8 58-4zM108 368q30-22 58-2-28-4-58 2zM108 368q-6-26-30-34 20 10 30 34zM108 368q10-26 36-30-24 8-36 30z"/>
+          <g class="boat"><path class="hull" d="M300 468h64l-10 14h-44z"/><path class="sail" d="M334 464v-52l30 52z"/></g>
+        </g>
+        <g class="nightg" id="city"></g>
+      </svg>
+    </div>
+    <div class="floatchip" id="chip"></div>
+  </div>
+</div></section>
+
+<div class="marquee" aria-hidden="true"><div class="track" id="marquee"></div></div>
+
+<section class="s1"><div class="wrap stats">
+  <div class="stat reveal"><span class="num" data-to="35">0</span><span class="plus">+</span><p>destinații în ofertă</p></div>
+  <div class="stat reveal"><span class="num" data-to="12">0</span><span class="plus">mii</span><p>de călători mulțumiți</p></div>
+  <div class="stat reveal"><span class="num" data-to="48" data-dec="1">0</span><p>nota medie din 5</p></div>
+  <div class="stat reveal"><span class="num" data-to="24">0</span><span class="plus">h</span><p>până la prima ofertă</p></div>
+</div></section>
+
+<section class="s2" id="destinatii"><div class="wrap">
+  <h2 class="reveal" id="dtitle"></h2>
+  <p class="sub reveal" id="dsub"></p>
+  <div class="tabs reveal" id="tabs" role="tablist"></div>
+  <div class="dests" id="dests"></div>
+</div></section>
+
+<section class="s3" id="itinerar"><div class="wrap itin">
+  <div class="map reveal">
+    <svg viewBox="0 0 480 360" id="mapsvg" role="img" aria-label="Harta circuitului">
+      <path class="route-bg" id="routebg" d="M30 290C110 120 170 330 240 200S380 70 450 120"/>
+      <path class="route" id="route" d="M30 290C110 120 170 330 240 200S380 70 450 120"/>
+      <g id="stopsg"></g>
+      <text class="jet" id="jet">✈</text>
+    </svg>
+  </div>
+  <div>
+    <h2 class="reveal" id="ititle"></h2>
+    <p class="sub reveal" id="isub"></p>
+    <ol class="stops" id="stops"></ol>
+    <p class="price total reveal" id="itotal"></p>
+  </div>
+</div></section>
+
+<section class="s4" id="pachete"><div class="wrap">
+  <h2 class="reveal">Pachete</h2>
+  <p class="sub reveal">Trei moduri de a pleca. Prețurile sunt orientative, de la, pe persoană.</p>
+  <div class="plans">
+    <article class="plan reveal"><h3>City break</h3><p class="price">990 lei<small>de la</small></p>
+      <ul><li>3 nopți, zbor și cazare</li><li>Ghid digital al orașului</li><li>Bagaj de mână inclus</li></ul><a class="btn ghost" href="#contact">Alege</a></article>
+    <article class="plan hot reveal"><span class="badge">Cel mai ales</span><h3>Sejur</h3><p class="price">2.490 lei<small>de la</small></p>
+      <ul><li>7 nopți, mic dejun sau all inclusive</li><li>Transfer de la aeroport</li><li>Asigurare medicală inclusă</li></ul><a class="btn" href="#contact">Alege</a></article>
+    <article class="plan reveal"><h3>Circuit de grup</h3><p class="price">3.790 lei<small>de la</small></p>
+      <ul><li>9–10 zile, cu ghid român</li><li>Transport între orașe</li><li>Intrări la obiective incluse</li></ul><a class="btn ghost" href="#contact">Alege</a></article>
+  </div>
+</div></section>
+
+<section class="s1" id="cum"><div class="wrap two">
+  <div class="reveal"><h2>Cum plecăm</h2><p>De la prima idee până la bagaj, în patru pași. Nu plătești nimic până nu ești de acord cu oferta.</p></div>
+  <ol class="timeline" id="timeline">
+    <li class="reveal"><time>Pasul 1</time><b>Alegi destinația</b><span>Din meniul de mai sus sau spui-ne ce ai în minte.</span></li>
+    <li class="reveal"><time>Pasul 2</time><b>Primești oferta</b><span>În maximum 24 de ore, cu zbor, cazare și transfer.</span></li>
+    <li class="reveal"><time>Pasul 3</time><b>Rezervi cu avans</b><span>30% la rezervare, restul cu 30 de zile înainte, inclusiv în rate.</span></li>
+    <li class="reveal"><time>Pasul 4</time><b>Plecăm</b><span>Primești documentele și un număr de urgență, 24 din 24.</span></li>
+  </ol>
+</div></section>
+
+<section class="s2"><div class="wrap">
+  <h2 class="reveal">Ce spun călătorii</h2>
+  <div class="quotes">
+    <figure class="reveal"><blockquote>Am primit oferta pentru Santorini în aceeași zi și totul a ieșit exact ca în program.</blockquote><figcaption><i>A</i>Andreea S.</figcaption></figure>
+    <figure class="reveal"><blockquote>Tokyo la prima vizită, fără stres. Ghidul digital ne-a salvat de câteva ori.</blockquote><figcaption><i>M</i>Mihai D.</figcaption></figure>
+    <figure class="reveal"><blockquote>Zanzibar a fost visul nostru. Transferurile au fost la timp, cu zâmbet.</blockquote><figcaption><i>C</i>Carmen V.</figcaption></figure>
+  </div>
+</div></section>
+
+<section class="s3"><div class="wrap narrow">
+  <h2 class="reveal">Întrebări frecvente</h2>
+  <details class="reveal"><summary>Am nevoie de viză?</summary><p>Depinde de destinație. Îți spunem în ofertă ce acte ai nevoie.</p></details>
+  <details class="reveal"><summary>Pot plăti în rate?</summary><p>Da, la pachetele de peste 2.000 de lei, în până la 6 rate.</p></details>
+  <details class="reveal"><summary>Ce se întâmplă dacă anulez?</summary><p>Până la 45 de zile înainte primești avansul înapoi, minus taxele companiei aeriene.</p></details>
+  <details class="reveal"><summary>Sunt asigurat medical?</summary><p>Sejururile includ asigurare medicală. Pentru city break o poți adăuga cu 39 de lei.</p></details>
+</div></section>
+
+<section class="s4" id="contact"><div class="wrap two">
+  <div class="reveal">
+    <h2>Cere o ofertă</h2>
+    <dl class="info">
+      <dt>Program</dt><dd>Luni – Vineri: 9:00 – 18:00<br>Sâmbătă: 10:00 – 14:00</dd>
+      <dt>Adresă</dt><dd>Strada Plecărilor 7</dd>
+      <dt>Telefon</dt><dd>0700 000 000</dd>
+      <dt>Email</dt><dd>contact@wanderlight.example</dd>
+    </dl>
+  </div>
+  <form id="rez" class="form reveal">
+    <h3>Spune-ne unde vrei să ajungi</h3>
+    <label>Nume<input name="n" required autocomplete="name"></label>
+    <label>Destinație<select name="dest" id="dsel"></select></label>
+    <div class="r2"><label>Data plecării<input type="date" name="d" required></label>
+    <label>Persoane<select name="p"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5+</option></select></label></div>
+    <button class="btn" type="submit">Trimite cererea</button>
+    <p id="rmsg" role="status"></p>
+  </form>
+</div></section>
+</main>
+
+<footer><div class="wrap">© 2026 Wanderlight. Site demonstrativ: destinațiile, prețurile și cererile nu sunt reale.</div></footer>
+<script src="script.js"></script>
+</body>
+</html>
